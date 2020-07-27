@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCharacterById } from '../../services/getCharacters';
-
+import PropTypes from 'prop-types';
+import { useHistory, Link } from 'react-router-dom';
 
 const CharacterDetail = ({ match }) => {
   const [character, setCharacter] = useState('');
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,8 +22,15 @@ const CharacterDetail = ({ match }) => {
     <>
       <p>{character.name}</p>
       <img src={character.image} />
+      <Link to={'/'}>
+        <button>Back to List</button>
+      </Link>
     </>
   );
+};
+
+CharacterDetail.propTypes = {
+  match: PropTypes.object.isRequired
 };
 
 export default CharacterDetail;

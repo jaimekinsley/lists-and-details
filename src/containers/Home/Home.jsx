@@ -7,6 +7,7 @@ const Home = () => {
   const {
     characters,
     loading,
+    page,
     handlePageChange
   } = useHome();
 
@@ -14,8 +15,8 @@ const Home = () => {
 
   return (
     <>
-      <button>Previous</button>
-      <button name="Next" onClick={handlePageChange} >Next</button>
+      <button name="previous" onClick={handlePageChange}>Previous</button>
+      <button name="next" onClick={handlePageChange} >Next</button>
 
       <Characters characters={characters} />
     </>

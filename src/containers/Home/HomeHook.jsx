@@ -7,7 +7,8 @@ export const useHome = () => {
   const [page, setPage] = useState(1);
 
   const handlePageChange = ({ target }) => {
-    if(target.name === 'Next') setPage(page => page + 1);
+    if(target.name === 'next') setPage(page => page + 1);
+    if(target.name === 'previous' && page > 1) setPage(page => page - 1);
   };
 
   useEffect(() => {

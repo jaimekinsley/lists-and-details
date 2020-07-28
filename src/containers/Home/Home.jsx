@@ -6,13 +6,19 @@ const Home = () => {
   // replaced functional component logic with custom hook here
   const {
     characters,
-    loading
+    loading,
+    handlePageChange
   } = useHome();
 
   if(loading) return <h1>Loading...</h1>;
 
   return (
-    <Characters characters={characters} />
+    <>
+      <button>Previous</button>
+      <button name="Next" onClick={handlePageChange} >Next</button>
+
+      <Characters characters={characters} />
+    </>
   );
 };
 

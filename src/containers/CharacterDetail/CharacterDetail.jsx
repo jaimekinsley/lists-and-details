@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { getCharacterById } from '../../services/getCharacters';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useCharacterDetail } from './CharacterDetailHook';

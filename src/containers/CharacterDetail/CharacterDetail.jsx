@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const CharacterDetail = ({ match }) => {
   const [character, setCharacter] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -33,5 +33,4 @@ CharacterDetail.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-
-
+export default CharacterDetail;

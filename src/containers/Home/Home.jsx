@@ -5,7 +5,7 @@ import Characters from '../../components/Characters/Characters';
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -15,7 +15,7 @@ const Home = () => {
       })
       .finally(() => setLoading(false));
   }, []);
-  
+
   if(loading) return <h1>Loading...</h1>;
 
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getCharacterById } from '../../services/getCharacters';
 import PropTypes from 'prop-types';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CharacterDetail = ({ match }) => {
   const [character, setCharacter] = useState('');
@@ -33,5 +33,5 @@ CharacterDetail.propTypes = {
   match: PropTypes.object.isRequired
 };
 
-export default CharacterDetail;
+
 

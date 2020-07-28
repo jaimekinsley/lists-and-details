@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getCharacterById } from '../../services/getCharacters';
 
-export const useCharacterDetail = () => {
+export const useCharacterDetail = (id) => {
   const [character, setCharacter] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getCharacterById()
+    getCharacterById(id)
       .then((character) => {
         setCharacter(character);
       })

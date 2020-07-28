@@ -3,19 +3,15 @@ import { useState, useEffect } from 'react';
 import { getCharacterById } from '../../services/getCharacters';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useCharacterDetail } from './CharacterDetailHook';
 
 const CharacterDetail = ({ match }) => {
-  const [character, setCharacter] = useState('');
-  const [loading, setLoading] = useState(true);
+  // replace functional component logic here
 
-  useEffect(() => {
-    setLoading(true);
-    getCharacterById(match.params.id)
-      .then((character) => {
-        setCharacter(character);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const { character,
+    loading
+  } = useCharacterDetail(match.params.id);
+
   if(loading) return <h1>Loading...</h1>;
 
   return (

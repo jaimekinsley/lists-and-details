@@ -14,7 +14,7 @@ jest.mock('../../services/getCharacters.js', () => ({
 describe('useCharacterDetail hooks', () => {
   it('has character state', () => {
     return act(() => {
-      const { result, waitFor } = renderHook(() => useCharacterDetail());
+      const { result, waitFor } = renderHook(() => useCharacterDetail('3589'));
       return waitFor(() => {
         expect(result.current.character).not.toBeUndefined();
       });
@@ -23,14 +23,14 @@ describe('useCharacterDetail hooks', () => {
 
   it('has loading state', () => {
     return act(() => {
-      const { result, waitFor } = renderHook(() => useCharacterDetail());
+      const { result, waitFor } = renderHook(() => useCharacterDetail('3589'));
       return waitFor(() => { expect(result.current.loading).not.toBeUndefined();
       });
     });
   });
 
   it('sets the character state on mount', () => {
-    const { result, waitFor } = renderHook(() => useCharacterDetail());
+    const { result, waitFor } = renderHook(() => useCharacterDetail('3589'));
 
     return waitFor(() => {
       expect(result.current.character).toEqual({
@@ -42,7 +42,7 @@ describe('useCharacterDetail hooks', () => {
   });
 
   it('sets loading to false after fetch is complete', () => {
-    const { result, waitFor } = renderHook(() => useCharacterDetail());
+    const { result, waitFor } = renderHook(() => useCharacterDetail('3589'));
 
     return waitFor(() => {
       expect(result.current.loading).toEqual(false);

@@ -8,15 +8,18 @@ const Home = () => {
     characters,
     loading,
     page,
-    handlePageChange
+    handlePageChange,
+    lastPage
   } = useHome();
 
   if(loading) return <h1>Loading...</h1>;
 
   return (
     <>
-      <button name="previous" onClick={handlePageChange}>Previous</button>
-      <button name="next" onClick={handlePageChange} >Next</button>
+      { page > 1 &&
+        <button name="previous" onClick={handlePageChange}>Previous</button> }
+
+      { lastPage === false &&  <button name="next" onClick={handlePageChange} >Next</button> }
 
       <Characters characters={characters} />
     </>

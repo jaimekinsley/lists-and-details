@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCharacters, getNextPage } from '../../services/getCharacters';
+import { getCharacters } from '../../services/getCharacters';
 
 export const useHome = () => {
   const [characters, setCharacters] = useState([]);
@@ -18,10 +18,8 @@ export const useHome = () => {
     getCharacters(page)
       .then((characters) => {
         setCharacters(characters);
-        return getNextPage(page);
-      })
-      .then((characters) => {
-        setLastPage(characters.length === 0);
+        const nextCharacters = getCharacters(page + 1);
+        setLastPage(nextCharacters.length === 0);
       })
       .finally(() => setLoading(false));
   }, [page]);

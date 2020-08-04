@@ -1,21 +1,15 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { getCharacterById } from '../../services/getCharacters';
 import PropTypes from 'prop-types';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useCharacterDetail } from './CharacterDetailHook';
 
 const CharacterDetail = ({ match }) => {
-  const [character, setCharacter] = useState('');
-  const [loading, setLoading] = useState(false);
+  // replace functional component logic here
 
-  useEffect(() => {
-    setLoading(true);
-    getCharacterById(match.params.id)
-      .then((character) => {
-        setCharacter(character);
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const { character,
+    loading
+  } = useCharacterDetail(match.params.id);
+
   if(loading) return <h1>Loading...</h1>;
 
   return (
@@ -34,4 +28,3 @@ CharacterDetail.propTypes = {
 };
 
 export default CharacterDetail;
-

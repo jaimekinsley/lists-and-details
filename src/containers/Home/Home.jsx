@@ -1,25 +1,28 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { getCharacters } from '../../services/getCharacters';
 import Characters from '../../components/Characters/Characters';
+import { useHome } from './HomeHook';
 
 const Home = () => {
-  const [characters, setCharacters] = useState([]);
+  // replaced functional component logic with custom hook here
+  const {
+    characters,
+    loading,
+    page,
+    handlePageChange,
+    lastPage
+  } = useHome();
 
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    getCharacters()
-      .then((characters) => {
-        setCharacters(characters);
-      })
-      .finally(() => setLoading(false));
-  }, []);
   if(loading) return <h1>Loading...</h1>;
 
   return (
-    <Characters characters={characters} />
+    <>
+      { page > 1 &&
+        <button name="previous" onClick={handlePageChange}>Previous</button> }
+
+      { lastPage === false &&  <button name="next" onClick={handlePageChange} >Next</button> }
+
+      <Characters characters={characters} />
+    </>
   );
 };
 

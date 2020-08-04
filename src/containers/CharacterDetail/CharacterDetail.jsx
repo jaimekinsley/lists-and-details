@@ -22,7 +22,7 @@ const CharacterDetail = ({ match }) => {
     <>
       <p>{character.name}</p>
       <img src={character.image} />
-      <Link to={'/'}>
+      <Link to="/">
         <button>Back to List</button>
       </Link>
     </>
